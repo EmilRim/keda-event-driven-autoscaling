@@ -1,0 +1,19 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: keda-demo
+  namespace: keda-demo
+spec:
+  parentRefs:
+    - name: default
+      namespace: envoy-gateway-system
+  hostnames:
+  - "hello.31.co.ucll.cloud"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: keda-demo
+          port: 8080
