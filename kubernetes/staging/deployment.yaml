@@ -1,28 +1,26 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: keda-demo
+  name: keda-demo-staging
   namespace: keda-demo
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: keda-demo
+      app: keda-demo-staging
   template:
     metadata:
       labels:
-        app: keda-demo
+        app: keda-demo-staging
     spec:
       securityContext:
         seccompProfile:
           type: RuntimeDefault
-
       containers:
-        - name: keda-demo
+        - name: keda-demo-staging
           image: emkatyte/keda-demo:v1
           ports:
             - containerPort: 8080
-
           securityContext:
             allowPrivilegeEscalation: false
             runAsNonRoot: true
@@ -31,7 +29,6 @@ spec:
             capabilities:
               drop:
                 - ALL
-
           resources:
             requests:
               cpu: 50m

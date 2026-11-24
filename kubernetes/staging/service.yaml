@@ -1,15 +1,12 @@
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: keda-demo
+  name: keda-demo-staging
   namespace: keda-demo
-  annotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/path: "/metrics"
-    prometheus.io/port: "8080"
 spec:
   selector:
-    app: keda-demo
+    app: keda-demo-staging
   ports:
     - port: 8080
       targetPort: 8080

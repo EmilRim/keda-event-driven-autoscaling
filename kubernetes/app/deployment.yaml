@@ -4,7 +4,6 @@ metadata:
   name: keda-demo
   namespace: keda-demo
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: keda-demo
